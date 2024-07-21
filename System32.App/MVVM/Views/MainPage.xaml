@@ -7,6 +7,45 @@
         <viewmodel:MainPageViewModel />
     </ContentPage.BindingContext>
 
-    <Label Text="{Binding MainUser.Name}" />
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <!-- Main Quest -->
+        <VerticalStackLayout Grid.Row="0">
+            <Label 
+                Text="{Binding MainQuest.Title}"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                Margin="0, 0, 0, 15"/>
+            <Label 
+                Text="{Binding MainQuest.Description}"
+                HorizontalOptions="Fill" />
+            <CollectionView ItemsSource="{Binding MainQuest.SubQuest}" />
+        </VerticalStackLayout>
+        
+        <!-- User -->
+        <VerticalStackLayout Grid.Row="1">
+            <Label
+                Text="{Binding MainUser.Name}"
+                HorizontalOptions="Center" 
+                FontSize="Medium" />
+
+            <FlexLayout JustifyContent="SpaceBetween">
+                <Label Text="Health " />
+                <Label Text="{Binding MainUser.Health}"/>
+            </FlexLayout>
+            <FlexLayout JustifyContent="SpaceBetween">
+                <Label Text="Charisma" />
+                <Label Text="{Binding MainUser.Charisma}"/>
+            </FlexLayout>
+            <FlexLayout JustifyContent="SpaceBetween">
+                <Label Text="Intelligence" />
+                <Label Text="{Binding MainUser.Intelligence}"/>
+            </FlexLayout>
+        </VerticalStackLayout>
+    </Grid>
 
 </ContentPage>
