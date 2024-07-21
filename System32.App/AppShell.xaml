@@ -5,8 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:System32.App"
     xmlns:view="clr-namespace:System32.App.MVVM.Views"
-    Shell.FlyoutBehavior="Disabled"
-    Title="System32.App">
+    Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Home"
