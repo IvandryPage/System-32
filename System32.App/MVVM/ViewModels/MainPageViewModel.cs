@@ -11,15 +11,17 @@ namespace System32.App.MVVM.ViewModels
 {
     public partial class MainPageViewModel : ObservableObject
     {
-        // fungsi main page : display main quest dan juga display seluruh data tentang user
         [ObservableProperty]
         private Quest mainQuest;
+
         [ObservableProperty]
         private User mainUser;
+        
+        [ObservableProperty]
+        private ObservableCollection<SubQuestViewModel> subQuests;
 
         public MainPageViewModel()
         {
-            // Bikin mock data dulu nggak sih
             MockDataUser();
             MockDataQuest();
         }
@@ -43,10 +45,23 @@ namespace System32.App.MVVM.ViewModels
             {
                  Title = "Quest Title Numbawan",
                  Description = "Test for Quest Model on View Model",
-                 SubQuest = new List<string>() 
+                 SubQuests = new List<SubQuest>() 
                  { 
-                     "Sub-Quest 1", 
-                     "Sub-Quest 2" 
+                     new SubQuest()
+                     {
+                         Detail = "Sub Quest 1",
+                         Target = 10
+                     },
+                     new SubQuest()
+                     {
+                         Detail = "Sub Quest 2",
+                         Target = 20
+                     },
+                     new SubQuest()
+                     {
+                         Detail = "Sub Quest 3",
+                         Target = 30
+                     },
                  },
                  StatusReward = new Dictionary<string, int>()
                  {
@@ -55,6 +70,13 @@ namespace System32.App.MVVM.ViewModels
                      {"Charisma", 3 },
                  }
             };
+
+            SubQuests = new ObservableCollection<SubQuestViewModel>();
+
+            foreach(var subQuest in MainQuest.SubQuests)
+            {
+                SubQuests.Add(new SubQuestViewModel(subQuest));
+            }
         }
     }
 }

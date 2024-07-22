@@ -23,7 +23,22 @@
             <Label 
                 Text="{Binding MainQuest.Description}"
                 HorizontalOptions="Fill" />
-            <CollectionView ItemsSource="{Binding MainQuest.SubQuest}" />
+            <CollectionView ItemsSource="{Binding SubQuests}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodel:SubQuestViewModel">
+                        <HorizontalStackLayout VerticalOptions="Center">
+                            <Label Text="{Binding Name}" />
+                            <Label Text=" " />
+                            <Label Text="{Binding Progress}" />
+                            <Label Text="/" />
+                            <Label Text="{Binding Target}" />
+                            <Button 
+                                Text="+" 
+                                Command="{Binding AddProgressCommand}" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
         
         <!-- User -->
